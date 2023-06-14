@@ -106,7 +106,7 @@ const AdminTable = () => {
   const handleEdit = async (roomId) => {
     try {
       const response = await fetch(
-        `http://localhost:8001/api/v1/room/${roomId}`,
+        `${API_ROOT}/room/${roomId}`,
         {
           method: "PUT",
           headers: {
