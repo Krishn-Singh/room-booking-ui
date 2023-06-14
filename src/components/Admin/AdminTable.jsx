@@ -36,7 +36,7 @@ const AdminTable = () => {
 
   const fetchRooms = async () => {
     try {
-      const response = await fetch("http://localhost:8001/api/v1/room");
+      const response = await fetch(`${API_ROOT}room`);
       const data = await response.json();
       setRooms(data.rooms);
     } catch (error) {
