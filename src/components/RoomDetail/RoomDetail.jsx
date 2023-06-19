@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API_ROOT } from '../../api';
 
 
+
 const RoomDetail = () => {
   const [roomData, setRoomData] = useState(null);
   const [bookingStatus, setBookingStatus] = useState(null);
@@ -63,27 +64,31 @@ const RoomDetail = () => {
   };
 
   return (
-    <div>
+    <>
       {bookingStatus === 'success' && <p>Your request has been forwarded.</p>}
       {bookingStatus === 'failure' && <p>Failed to process your request. Please try again.</p>}
-      {roomData ? (
-        roomData.map((room) => (
-          <div className="card" style={cardWidth} key={room._id}>
-            <img src={room.image} className="card-img-top" alt="image of rooms" />
-            <div className="card-body">
-              <h5 className="card-title">{room.name}</h5>
-              <p className="card-text">{room.price}</p>
-              <p className="card-text">{room.status}</p>
-              <button className="btn btn-primary" onClick={() => handleBookNow(room._id)}>
-                Book Now
-              </button>
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+        {roomData ? (
+          roomData.map((room) => (
+            <div className="col" key={room._id}>
+              <div className="card mx-3">
+                <img src={room.image} className="card-img-top" alt="image of rooms" />
+                <div className="card-body">
+                  <h5 className="card-title">{room.name}</h5>
+                  <p className="card-text">{room.price}</p>
+                  <p className="card-text">{room.status}</p>
+                  <button className="btn btn-primary" onClick={() => handleBookNow(room._id)}>
+                    Book Now
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        ))
-      ) : (
-        <p>Loading room data...</p>
-      )}
-    </div>
+          ))
+        ) : (
+          <p>Loading room data...</p>
+        )}
+      </div>
+    </>
   );
 };
 

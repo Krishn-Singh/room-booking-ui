@@ -1,1 +1,1 @@
-export const API_ROOT = "https://bookmynewroom.onrender.com/api/v1/";
+export const API_ROOT = "http://localhost:8001/api/v1/";
